@@ -12,11 +12,11 @@ TEMPLATE = subdirs
 #	.target	Base string used for makefile targets related to this subproject. Available only on platforms that use makefiles.
 
 SUBDIRS =	pebblelib \
-			application/pebbleqt.pro \
-			plugins/DigitalModemExample \
-			plugins/MorseDigitalModem \
-			plugins/RttyDigitalModem \
-			plugins/WWVDigitalModem
+			application/pebbleqt.pro
+			#plugins/DigitalModemExample \
+			#plugins/MorseDigitalModem \
+			#plugins/RttyDigitalModem \
+			#plugins/WWVDigitalModem
 
 # build must be last:
 #build in the order listed

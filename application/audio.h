@@ -7,7 +7,7 @@
 #pragma clang diagnostic ignored "-W#warnings"
 
 #include <QObject>
-#include <QstringList>
+#include <QStringList>
 #include "cpx.h"
 
 class Settings;

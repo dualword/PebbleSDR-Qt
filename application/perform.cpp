@@ -67,14 +67,15 @@ Perform::Perform()
 quint64 Perform::QueryPerformanceCounter()
 {
 quint64 val=0;
-#ifdef USE_PERFORMANCE
-quint32 eax, edx;
-	__asm__ __volatile__("cpuid": : : "ax", "bx", "cx", "dx");
-	__asm__ __volatile__("rdtsc":"=a"(eax), "=d"(edx));
-	val = edx;
-	val = val << 32;
-	val += eax;
-#endif
+/*TODO:*/
+//#ifdef USE_PERFORMANCE
+//quint32 eax, edx;
+//	__asm__ __volatile__("cpuid": : : "ax", "bx", "cx", "dx");
+//	__asm__ __volatile__("rdtsc":"=a"(eax), "=d"(edx));
+//	val = edx;
+//	val = val << 32;
+//	val += eax;
+//#endif
 	return val;
 }
 

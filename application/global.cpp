@@ -22,7 +22,7 @@ Global::Global()
 	}
     revision = new char[80];
     //See PebbleQt.pro for DEFINES statement that creates PEBBLE_VERSION
-    sprintf(revision,"Build: %s %s",PEBBLE_VERSION, PEBBLE_DATE);
+    //sprintf(revision,"Build: %s %s",PEBBLE_VERSION, PEBBLE_DATE);
     //qDebug(revision);
 
     //Used everywhere we need to display or measure db.  Look out for any hard coded -120, -130 constants

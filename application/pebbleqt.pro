@@ -272,6 +272,11 @@ win32 {
 	}
 }
 
+unix {
+	LIBS += -L$${DESTDIR} -lpebblelib
+	LIBS += -lusb-1.0 -lrt -ldl -lfftw3 -lportaudio
+		
+}
 
 #Build instructions for build.h using build.tmpl
 #doesn't seem to work
@@ -361,11 +366,11 @@ HEADERS += \
     perform.h \
     devices/sdrfile.h \
     devices/rtl2832.h \
-    devices/sdr_iq.h \
-    devices/softrock.h \
-    devices/hpsdr.h \
-    devices/funcube.h \
-    devices/elektorsdr.h \
+    #devices/sdr_iq.h \
+    #devices/softrock.h \
+    #devices/hpsdr.h \
+    #devices/funcube.h \
+    #devices/elektorsdr.h \
     devices/usbutil.h \
     devices/usb.h \
     devices/extio.h \
@@ -430,11 +435,11 @@ SOURCES += \
     perform.cpp \
     devices/sdrfile.cpp \
     devices/rtl2832.cpp \
-    devices/sdr_iq.cpp \
-    devices/softrock.cpp \
-    devices/hpsdr.cpp \
-    devices/funcube.cpp \
-    devices/elektorsdr.cpp \
+    #devices/sdr_iq.cpp \
+    #devices/softrock.cpp \
+    #devices/hpsdr.cpp \
+    #devices/funcube.cpp \
+    #devices/elektorsdr.cpp \
 	devices/usbutil.cpp \
     devices/rtl-sdr/librtlsdr.c \
     devices/rtl-sdr/tuner_e4k.c \
@@ -457,15 +462,15 @@ SOURCES += \
 
 FORMS += \
     spectrumwidget.ui \
-    softrockoptions.ui \
+    #softrockoptions.ui \
     smeterwidget.ui \
-    sdriqoptions.ui \
+    #sdriqoptions.ui \
     receiverwidget.ui \
     pebbleii.ui \
-    elektoroptions.ui \
-    hpsdroptions.ui \
+    #elektoroptions.ui \
+    #hpsdroptions.ui \
     iqbalanceoptions.ui \
-    funcubeoptions.ui \
+    #funcubeoptions.ui \
     sdr-ip.ui \
     sdr.ui \
     directinput.ui \

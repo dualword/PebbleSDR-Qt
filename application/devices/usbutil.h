@@ -6,8 +6,8 @@
 #include "global.h"
 
 #include <QLibrary>
-#include "../d2xx/bin/ftd2xx.h"
-#include "../d2xx/libusb/libusb/libusb.h"
+#include "../D2XX/bin/ftd2xx.h"
+#include "../D2XX/libusb/libusb/libusb.h"
 
 /*
   FTDI Devices

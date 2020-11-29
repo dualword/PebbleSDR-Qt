@@ -3,9 +3,9 @@
 #include "global.h"
 #include "receiver.h"
 #include "qmessagebox.h"
-#include "devices/elektorsdr.h"
-#include "devices/sdr_iq.h"
-#include "devices/hpsdr.h"
+//#include "devices/elektorsdr.h"
+//#include "devices/sdr_iq.h"
+//#include "devices/hpsdr.h"
 #include "signalprocessing.h"
 #include "audioqt.h"
 #include "testbench.h"
@@ -76,7 +76,7 @@ Receiver::Receiver(ReceiverWidget *rw, QMainWindow *main)
 	signalSpectrum = NULL;
 	agc = NULL;
 	iqBalance = NULL;
-	sdrThread = NULL;
+	//sdrThread = NULL;
     iDigitalModem = NULL;
 
 	//Testing

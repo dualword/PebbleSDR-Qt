@@ -6,7 +6,7 @@
 #include <QMainWindow>
 #include <QtCore/QVariant>
 #include <QMutex>
-#include "devices/softrock.h"
+//#include "devices/softrock.h"
 #include "audio.h"
 #include "soundcard.h"
 #include "cpx.h"
@@ -29,7 +29,7 @@
 #include "filters/fractresampler.h"
 #include "devices/wavfile.h"
 
-#include "devices/sdr_iq.h"
+//#include "devices/sdr_iq.h"
 #include "plugins.h"
 
 class Receiver:public QObject
@@ -162,6 +162,6 @@ private:
 	FIRFilter *lsbFilter;
 	FIRFilter *amFilter;
 
-	SDR_IQThread *sdrThread;
+	//SDR_IQThread *sdrThread;
 
 };

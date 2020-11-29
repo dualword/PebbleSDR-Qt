@@ -7,14 +7,14 @@
 #include <QLibrary>
 #include "sdr.h"
 #include "settings.h"
-#include "devices/softrock.h"
-#include "devices/elektorsdr.h"
-#include "devices/sdr_iq.h"
-#include "devices/hpsdr.h"
-#include "devices/funcube.h"
+//#include "devices/softrock.h"
+//#include "devices/elektorsdr.h"
+//#include "devices/sdr_iq.h"
+//#include "devices/hpsdr.h"
+//#include "devices/funcube.h"
 #include "devices/sdrfile.h"
 #include "devices/rtl2832.h"
-#include "devices/sdr_ip.h"
+//#include "devices/sdr_ip.h"
 #include "soundcard.h"
 #include "receiver.h"
 #include "QMessageBox"
@@ -431,51 +431,51 @@ SDR *SDR::Factory(Receiver *receiver, SDR::SDRDEVICE dev, Settings *settings)
 
     switch (dev)
 	{
-	case SDR::SR_LITE:
-        sdr = new SoftRock(receiver, SDR::SR_LITE,settings);
-		break;
-	case SDR::SR_V9:
-		sdr = new SoftRock(receiver, SDR::SR_V9,settings);
-		break;
-	case SDR::SR_ENSEMBLE:
-		sdr = new SoftRock(receiver, SDR::SR_ENSEMBLE,settings);
-		break;
-	case SDR::SR_ENSEMBLE_2M:
-		sdr = new SoftRock(receiver, SDR::SR_ENSEMBLE_2M,settings);
-		break;
-	case SDR::SR_ENSEMBLE_4M:
-		sdr = new SoftRock(receiver, SDR::SR_ENSEMBLE_4M,settings);
-		break;
-	case SDR::SR_ENSEMBLE_6M:
-		sdr = new SoftRock(receiver, SDR::SR_ENSEMBLE_6M,settings);
-		break;
-	case SDR::SR_ENSEMBLE_LF:
-		sdr = new SoftRock(receiver, SDR::SR_ENSEMBLE_LF,settings);
-		break;
-    case SDR::FiFi:
-        sdr = new SoftRock(receiver, SDR::FiFi,settings);
-        break;
-	case SDR::ELEKTOR:
-		sdr = new ElektorSDR(receiver, SDR::ELEKTOR,settings);
-		break;
-	case SDR::ELEKTOR_PA:
-		sdr = new ElektorSDR(receiver, SDR::ELEKTOR_PA,settings);
-		break;
-    case SDR::SDR_IQ_USB:
-        sdr = new SDR_IQ(receiver, SDR::SDR_IQ_USB,settings);
-		break;
-    case SDR::SDR_IP_TCP:
-        sdr = new SDR_IP(receiver, SDR::SDR_IP_TCP,settings);
-        break;
-    case SDR::HPSDR_USB:
-		sdr = new HPSDR(receiver, SDR::HPSDR_USB,settings);
-		break;
-	case SDR::FUNCUBE:
-		sdr = new FunCube(receiver, SDR::FUNCUBE,settings);
-		break;
-    case SDR::FUNCUBE_PLUS:
-        sdr = new FunCube(receiver, SDR::FUNCUBE_PLUS,settings);
-        break;
+//	case SDR::SR_LITE:
+//        sdr = new SoftRock(receiver, SDR::SR_LITE,settings);
+//		break;
+//	case SDR::SR_V9:
+//		sdr = new SoftRock(receiver, SDR::SR_V9,settings);
+//		break;
+//	case SDR::SR_ENSEMBLE:
+//		sdr = new SoftRock(receiver, SDR::SR_ENSEMBLE,settings);
+//		break;
+//	case SDR::SR_ENSEMBLE_2M:
+//		sdr = new SoftRock(receiver, SDR::SR_ENSEMBLE_2M,settings);
+//		break;
+//	case SDR::SR_ENSEMBLE_4M:
+//		sdr = new SoftRock(receiver, SDR::SR_ENSEMBLE_4M,settings);
+//		break;
+//	case SDR::SR_ENSEMBLE_6M:
+//		sdr = new SoftRock(receiver, SDR::SR_ENSEMBLE_6M,settings);
+//		break;
+//	case SDR::SR_ENSEMBLE_LF:
+//		sdr = new SoftRock(receiver, SDR::SR_ENSEMBLE_LF,settings);
+//		break;
+//    case SDR::FiFi:
+//        sdr = new SoftRock(receiver, SDR::FiFi,settings);
+//        break;
+//	case SDR::ELEKTOR:
+//		sdr = new ElektorSDR(receiver, SDR::ELEKTOR,settings);
+//		break;
+//	case SDR::ELEKTOR_PA:
+//		sdr = new ElektorSDR(receiver, SDR::ELEKTOR_PA,settings);
+//		break;
+//    case SDR::SDR_IQ_USB:
+//        sdr = new SDR_IQ(receiver, SDR::SDR_IQ_USB,settings);
+//		break;
+//    case SDR::SDR_IP_TCP:
+//        sdr = new SDR_IP(receiver, SDR::SDR_IP_TCP,settings);
+//        break;
+//    case SDR::HPSDR_USB:
+//		sdr = new HPSDR(receiver, SDR::HPSDR_USB,settings);
+//		break;
+//	case SDR::FUNCUBE:
+//		sdr = new FunCube(receiver, SDR::FUNCUBE,settings);
+//		break;
+//    case SDR::FUNCUBE_PLUS:
+//        sdr = new FunCube(receiver, SDR::FUNCUBE_PLUS,settings);
+//        break;
 
     case SDR::FILE:
         sdr = new SDRFile(receiver,SDR::FILE, settings);
