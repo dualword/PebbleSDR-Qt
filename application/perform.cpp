@@ -1,3 +1,4 @@
+/* PebbleSDR-Qt (2020) http://github.com/dualword/PebbleSDR-Qt License:GNU GPL*/
 /*
  * Modified by RAL to class so multiple timers can be used in same program
  */

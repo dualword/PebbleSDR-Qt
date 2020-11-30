@@ -22,12 +22,12 @@ Presets::Presets(ReceiverWidget *w)
     memories = NULL;
 
     //Bands MUST be read before stations!!
-    if (!ReadBands()) {
-        QMessageBox::information(NULL,"Pebble","No bands.csv file!");
-    }
-    else if(!ReadStations()) {
-        QMessageBox::information(NULL,"Pebble","No eibi.csv file!");
-    }
+//    if (!ReadBands()) {
+//        QMessageBox::information(NULL,"Pebble","No bands.csv file!");
+//    }
+//    else if(!ReadStations()) {
+//        QMessageBox::information(NULL,"Pebble","No eibi.csv file!");
+//    }
 
 }
 

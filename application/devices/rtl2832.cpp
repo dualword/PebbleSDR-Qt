@@ -129,9 +129,9 @@ RTL2832::RTL2832 (Receiver *_receiver, SDRDEVICE dev, Settings *_settings): SDR(
 
     sampleGain = .005; //Matched with rtlGain
 
-    //Not using this anymore?  Remove
-    usb = new USBUtil();
-    usb->LibUSBInit();
+//    //Not using this anymore?  Remove
+//    usb = new USBUtil();
+//    usb->LibUSBInit();
 
     framesPerBuffer = settings->framesPerBuffer;
 

@@ -47,7 +47,7 @@ private:
 
     rtlsdr_dev_t *dev;
 
-    USBUtil *usb;
+//    USBUtil *usb;
 
 
     virtual void StopProducerThread();

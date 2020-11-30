@@ -1,3 +1,4 @@
+/* PebbleSDR-Qt (2020) http://github.com/dualword/PebbleSDR-Qt License:GNU GPL*/
 //GPL license and attributions are in gpl.h and terms are included in this file by reference
 #include "gpl.h"
 #include "cpx.h"

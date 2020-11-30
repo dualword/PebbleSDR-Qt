@@ -1,3 +1,4 @@
+/* PebbleSDR-Qt (2020) http://github.com/dualword/PebbleSDR-Qt License:GNU GPL*/
 //GPL license and attributions are in gpl.h and terms are included in this file by reference
 #include "gpl.h"
 
@@ -38,7 +39,7 @@ void ReceiverWidget::SetReceiver(Receiver *r)
 
 	QStringList agcModes;
     agcModes << "FAST" << "MED" << "SLOW" << "LONG" << "OFF";
-	ui.agcBox->addItems(agcModes);
+	//ui.agcBox->addItems(agcModes);
 
 #if 0
 	QMenu *settingsMenu = new QMenu();
@@ -53,17 +54,17 @@ void ReceiverWidget::SetReceiver(Receiver *r)
     ui.filterBox->addItems(Demod::demodInfo[dmAM].filters); //Default
     ui.filterBox->setCurrentIndex(Demod::demodInfo[dmAM].defaultFilter);
 
-    ui.dataSelectionBox->addItem("No Data",NO_DATA);
-    ui.dataSelectionBox->addItem("Band Data",BAND_DATA);
-    foreach (QString name,receiver->getPluginNames())
-        ui.dataSelectionBox->addItem(name,PLUGIN_DATA);
+//    ui.dataSelectionBox->addItem("No Data",NO_DATA);
+//    ui.dataSelectionBox->addItem("Band Data",BAND_DATA);
+//    foreach (QString name,receiver->getPluginNames())
+//        ui.dataSelectionBox->addItem(name,PLUGIN_DATA);
 
-    connect(ui.dataSelectionBox,SIGNAL(currentIndexChanged(int)),this,SLOT(dataSelectionChanged(int)));
+    //connect(ui.dataSelectionBox,SIGNAL(currentIndexChanged(int)),this,SLOT(dataSelectionChanged(int)));
     SetDataMode((NO_DATA));
 
 	loMode = true;
 	//Set intial gain slider position
-	ui.gainSlider->setValue(50);
+	//ui.gainSlider->setValue(50);
 	tunerStep=1000;
 
 	modeOffset = 0;
@@ -79,10 +80,10 @@ void ReceiverWidget::SetReceiver(Receiver *r)
     connect(ui.bandCombo,SIGNAL(currentIndexChanged(int)),this,SLOT(bandChanged(int)));
     connect(ui.stationCombo,SIGNAL(currentIndexChanged(int)),this,SLOT(stationChanged(int)));
 
-    ui.squelchSlider->setMinimum(global->minDb);
-    ui.squelchSlider->setMaximum(global->maxDb);
-    ui.squelchSlider->setValue(global->minDb);
-    connect(ui.squelchSlider,SIGNAL(valueChanged(int)),this,SLOT(squelchSliderChanged(int)));
+//    ui.squelchSlider->setMinimum(global->minDb);
+//    ui.squelchSlider->setMaximum(global->maxDb);
+//    ui.squelchSlider->setValue(global->minDb);
+    //connect(ui.squelchSlider,SIGNAL(valueChanged(int)),this,SLOT(squelchSliderChanged(int)));
 
     currentBandIndex = -1;
 
@@ -97,15 +98,15 @@ void ReceiverWidget::SetReceiver(Receiver *r)
     connect(ui.anfButton,SIGNAL(toggled(bool)),this,SLOT(anfButtonToggled(bool)));
 	connect(ui.nbButton,SIGNAL(toggled(bool)),this,SLOT(nbButtonToggled(bool)));
 	connect(ui.nb2Button,SIGNAL(toggled(bool)),this,SLOT(nb2ButtonToggled(bool)));
-	connect(ui.agcBox,SIGNAL(currentIndexChanged(int)),this,SLOT(agcBoxChanged(int)));
-	connect(ui.muteButton,SIGNAL(toggled(bool)),this,SLOT(muteButtonToggled(bool)));
+//	connect(ui.agcBox,SIGNAL(currentIndexChanged(int)),this,SLOT(agcBoxChanged(int)));
+//	connect(ui.muteButton,SIGNAL(toggled(bool)),this,SLOT(muteButtonToggled(bool)));
 	connect(ui.modeBox,SIGNAL(currentIndexChanged(QString)),this,SLOT(modeSelectionChanged(QString)));
 	connect(ui.filterBox,SIGNAL(currentIndexChanged(QString)),this,SLOT(filterSelectionChanged(QString)));
-	connect(ui.gainSlider,SIGNAL(valueChanged(int)),this,SLOT(gainSliderChanged(int)));
-	connect(ui.agcSlider,SIGNAL(valueChanged(int)),this,SLOT(agcSliderChanged(int)));
-	connect(ui.spectrumWidget,SIGNAL(mixerChanged(int)),this,SLOT(mixerChanged(int)));
-    connect(ui.spectrumWidget,SIGNAL(mixerChanged(int,bool)),this,SLOT(mixerChanged(int,bool)));
-    connect(ui.addMemoryButton,SIGNAL(clicked()),this,SLOT(addMemoryButtonClicked()));
+//	connect(ui.gainSlider,SIGNAL(valueChanged(int)),this,SLOT(gainSliderChanged(int)));
+//	connect(ui.agcSlider,SIGNAL(valueChanged(int)),this,SLOT(agcSliderChanged(int)));
+//	connect(ui.spectrumWidget,SIGNAL(mixerChanged(int)),this,SLOT(mixerChanged(int)));
+//    connect(ui.spectrumWidget,SIGNAL(mixerChanged(int,bool)),this,SLOT(mixerChanged(int,bool)));
+//    connect(ui.addMemoryButton,SIGNAL(clicked()),this,SLOT(addMemoryButtonClicked()));
     connect(ui.findStationButton,SIGNAL(clicked()),this,SLOT(findStationButtonClicked()));
 
 	connect(ui.nixie1Up,SIGNAL(clicked()),this,SLOT(nixie1UpClicked()));
@@ -161,20 +162,20 @@ void ReceiverWidget::SetReceiver(Receiver *r)
     showTime();
 
     QComboBox *sdrSelector = ui.sdrSelector;
-    sdrSelector->addItem("SR Ensemble",SDR::SR_ENSEMBLE);
-    sdrSelector->addItem("SR Ensemble 2M",SDR::SR_ENSEMBLE_2M);
-    sdrSelector->addItem("SR Ensemble 4M",SDR::SR_ENSEMBLE_4M);
-    sdrSelector->addItem("SR Ensemble 6M",SDR::SR_ENSEMBLE_6M);
-    sdrSelector->addItem("SR V9-ABPF",SDR::SR_V9);
-    sdrSelector->addItem("SR LITE II",SDR::SR_LITE);
-    sdrSelector->addItem("FiFi",SDR::FiFi);
-    sdrSelector->addItem("Elektor SDR",SDR::ELEKTOR);
-    sdrSelector->addItem("RFSpace SDR-IQ",SDR::SDR_IQ_USB);
-    sdrSelector->addItem("RFSpace SDR-IP",SDR::SDR_IP_TCP);
-    sdrSelector->addItem("HPSDR USB",SDR::HPSDR_USB);
+//    sdrSelector->addItem("SR Ensemble",SDR::SR_ENSEMBLE);
+//    sdrSelector->addItem("SR Ensemble 2M",SDR::SR_ENSEMBLE_2M);
+//    sdrSelector->addItem("SR Ensemble 4M",SDR::SR_ENSEMBLE_4M);
+//    sdrSelector->addItem("SR Ensemble 6M",SDR::SR_ENSEMBLE_6M);
+//    sdrSelector->addItem("SR V9-ABPF",SDR::SR_V9);
+//    sdrSelector->addItem("SR LITE II",SDR::SR_LITE);
+//    sdrSelector->addItem("FiFi",SDR::FiFi);
+//    sdrSelector->addItem("Elektor SDR",SDR::ELEKTOR);
+//    sdrSelector->addItem("RFSpace SDR-IQ",SDR::SDR_IQ_USB);
+//    sdrSelector->addItem("RFSpace SDR-IP",SDR::SDR_IP_TCP);
+//    sdrSelector->addItem("HPSDR USB",SDR::HPSDR_USB);
     //sdrSelector->addItem("HPSDR TCP",SDR::HPSDR_TCP);
-    sdrSelector->addItem("FUNcube Pro",SDR::FUNCUBE);
-    sdrSelector->addItem("FUNcube Pro+",SDR::FUNCUBE_PLUS);
+//    sdrSelector->addItem("FUNcube Pro",SDR::FUNCUBE);
+//    sdrSelector->addItem("FUNcube Pro+",SDR::FUNCUBE_PLUS);
     sdrSelector->addItem("File",SDR::FILE);
     sdrSelector->addItem("RTL2832 Family",SDR::DVB_T);
 
@@ -193,9 +194,9 @@ void ReceiverWidget::SetReceiver(Receiver *r)
     connect(directInputUi->enterButton,SIGNAL(clicked()),this,SLOT(directEntryAccepted()));
     connect(directInputUi->cancelButton,SIGNAL(clicked()),this,SLOT(directEntryCanceled()));
 
-    ui.dataFrame->setVisible(false);
+    //ui.dataFrame->setVisible(false);
 
-    connect(ui.spectrumWidget,SIGNAL(mixerLimitsChanged(int,int)),this,SLOT(setMixerLimits(int,int)));
+    //connect(ui.spectrumWidget,SIGNAL(mixerLimitsChanged(int,int)),this,SLOT(setMixerLimits(int,int)));
 
 }
 
@@ -206,7 +207,7 @@ ReceiverWidget::~ReceiverWidget(void)
 
 void ReceiverWidget::showDataFrame(bool b)
 {
-    ui.dataFrame->setVisible(b);
+    //ui.dataFrame->setVisible(b);
 }
 
 void ReceiverWidget::mixerChanged(int m)
@@ -426,7 +427,7 @@ void ReceiverWidget::SetFrequency(double f)
 	}
 	//frequency is what's displayed, ie combination of loFrequency and mixer (if any)
     DisplayNixieNumber(frequency);
-    ui.spectrumWidget->SetMixer(mixer,loFrequency); //Spectrum tracks mixer
+    //ui.spectrumWidget->SetMixer(mixer,loFrequency); //Spectrum tracks mixer
     //Update band info
     DisplayBand(frequency);
 
@@ -438,7 +439,7 @@ double ReceiverWidget::GetFrequency()
 }
 void ReceiverWidget::SetMessage(QStringList s)
 {
-	ui.spectrumWidget->SetMessage(s);
+	//ui.spectrumWidget->SetMessage(s);
 }
 void ReceiverWidget::SetMode(DEMODMODE m)
 {
@@ -484,12 +485,12 @@ void ReceiverWidget::powerToggled(bool on)
 		//Give SMeter access to signal strength SignalProcessing block
 		ui.sMeterWidget->setSignalStrength(receiver->GetSignalStrength());
         ui.sMeterWidget->SetSignalSpectrum(receiver->GetSignalSpectrum());
-        ui.spectrumWidget->SetSignalSpectrum(receiver->GetSignalSpectrum());
+        //ui.spectrumWidget->SetSignalSpectrum(receiver->GetSignalSpectrum());
 
-        ui.spectrumWidget->plotSelectionChanged((SignalSpectrum::DISPLAYMODE)global->sdr->lastDisplayMode);
+        //ui.spectrumWidget->plotSelectionChanged((SignalSpectrum::DISPLAYMODE)global->sdr->lastDisplayMode);
         ui.bandType->setCurrentIndex(Band::HAM);
 
-		ui.spectrumWidget->Run(true);
+		//ui.spectrumWidget->Run(true);
         ui.sMeterWidget->start();
 		setLoMode(true);
 
@@ -510,7 +511,7 @@ void ReceiverWidget::powerToggled(bool on)
 
         presets = NULL;
 
-		ui.spectrumWidget->Run(false);
+		//ui.spectrumWidget->Run(false);
         ui.sMeterWidget->stop();
 		//We have to make sure that widgets are stopped before cleaning up supporting objects
 		receiver->Power(false);
@@ -520,7 +521,7 @@ void ReceiverWidget::powerToggled(bool on)
 
 void ReceiverWidget::SetDataMode(int _dataMode)
 {
-    ui.dataSelectionBox->setCurrentIndex(_dataMode);
+    //ui.dataSelectionBox->setCurrentIndex(_dataMode);
 }
 //Tuning display can drive LO or Mixer depending on selection
 void ReceiverWidget::setLoMode(bool b)
@@ -686,7 +687,7 @@ void ReceiverWidget::filterSelectionChanged(QString f)
 		break;
 	}
 
-	ui.spectrumWidget->SetFilter(lo,hi); //So we can display filter around cursor
+	//ui.spectrumWidget->SetFilter(lo,hi); //So we can display filter around cursor
 
 	receiver->SetFilter(lo,hi);
 }
@@ -697,59 +698,59 @@ void ReceiverWidget::dataSelectionChanged(int s)
         return;
 
     //Clear any previous data selection
-    switch(dataSelection) {
-        case PLUGIN_DATA:
-
-            //Reset decoder
-            receiver->SetDigitalModem(NULL,NULL);
-            //Delete all children
-            foreach (QObject *obj, ui.dataFrame->children()) {
-                //Normally we get a grid layout object, uiFrame, dataFrame
-                delete obj;
-            }
-            break;
-        case BAND_DATA:
-            receiver->getDemod()->SetupDataUi(NULL);
-            //Delete all children
-            foreach (QObject *obj, ui.dataFrame->children()) {
-                //Normally we get a grid layout object, uiFrame, dataFrame
-                delete obj;
-            }
-            break;
-        default:
-            break;
-    }
+//    switch(dataSelection) {
+//        case PLUGIN_DATA:
+//
+//            //Reset decoder
+//            receiver->SetDigitalModem(NULL,NULL);
+//            //Delete all children
+//            foreach (QObject *obj, ui.dataFrame->children()) {
+//                //Normally we get a grid layout object, uiFrame, dataFrame
+//                delete obj;
+//            }
+//            break;
+//        case BAND_DATA:
+//            receiver->getDemod()->SetupDataUi(NULL);
+//            //Delete all children
+//            foreach (QObject *obj, ui.dataFrame->children()) {
+//                //Normally we get a grid layout object, uiFrame, dataFrame
+//                delete obj;
+//            }
+//            break;
+//        default:
+//            break;
+//    }
 
     //enums are stored as user data with each menu item
-    dataSelection = (DATA_SELECTION)ui.dataSelectionBox->itemData(s).toInt();
-
-    QWidget *parent;
-
-    switch (dataSelection) {
-        case NO_DATA:
-            //Data frame is always open if we get here
-            ui.dataFrame->setVisible(false);
-            parent = ui.dataFrame;
-            while (parent) {
-                //Warning, adj size will use all layout hints, including h/v spacer sizing.  So overall size may change
-                parent->adjustSize();
-                parent = parent->parentWidget();
-            }
-            update();
-            break;
-        case BAND_DATA:
-            receiver->getDemod()->SetupDataUi(ui.dataFrame);
-            ui.dataFrame->setVisible(true);
-            break;
-        case PLUGIN_DATA:
-            receiver->SetDigitalModem(ui.dataSelectionBox->currentText(), ui.dataFrame);
-            ui.dataFrame->setVisible(true);
-            break;
-        default:
-            //Todo, delete any previous active dataUI
-            ui.dataFrame->setVisible(false);
-            break;
-    }
+//    dataSelection = (DATA_SELECTION)ui.dataSelectionBox->itemData(s).toInt();
+//
+//    QWidget *parent;
+//
+//    switch (dataSelection) {
+//        case NO_DATA:
+//            //Data frame is always open if we get here
+//            ui.dataFrame->setVisible(false);
+//            parent = ui.dataFrame;
+//            while (parent) {
+//                //Warning, adj size will use all layout hints, including h/v spacer sizing.  So overall size may change
+//                parent->adjustSize();
+//                parent = parent->parentWidget();
+//            }
+//            update();
+//            break;
+//        case BAND_DATA:
+//            receiver->getDemod()->SetupDataUi(ui.dataFrame);
+//            ui.dataFrame->setVisible(true);
+//            break;
+//        case PLUGIN_DATA:
+//            receiver->SetDigitalModem(ui.dataSelectionBox->currentText(), ui.dataFrame);
+//            ui.dataFrame->setVisible(true);
+//            break;
+//        default:
+//            //Todo, delete any previous active dataUI
+//            ui.dataFrame->setVisible(false);
+//            break;
+//    }
 }
 
 
@@ -783,26 +784,26 @@ void ReceiverWidget::modeSelectionChanged(QString m)
     ui.filterBox->addItems(Demod::demodInfo[mode].filters);
     ui.filterBox->setCurrentIndex(Demod::demodInfo[mode].defaultFilter);
 
-    ui.spectrumWidget->SetMode(mode, modeOffset);
+    //ui.spectrumWidget->SetMode(mode, modeOffset);
 	receiver->SetMode(mode);
 	ui.filterBox->blockSignals(false);
 	this->filterSelectionChanged(ui.filterBox->currentText());
 }
 void ReceiverWidget::SetDisplayedAgcThreshold(int g)
 {
-	ui.agcSlider->setValue(g);
+	//ui.agcSlider->setValue(g);
 }
 //Allows receiver to set gain and range
 void ReceiverWidget::SetDisplayedGain(int g, int min, int max)
 {
-	ui.gainSlider->setMinimum(min);
-	ui.gainSlider->setMaximum(max);
-	//Set gain slider and let signals do the rest
-	ui.gainSlider->setValue(g);
+//	ui.gainSlider->setMinimum(min);
+//	ui.gainSlider->setMaximum(max);
+//	//Set gain slider and let signals do the rest
+//	ui.gainSlider->setValue(g);
 }
 void ReceiverWidget::SetDisplayedSquelch(int s)
 {
-	ui.squelchSlider->setValue(s);
+	//ui.squelchSlider->setValue(s);
 	squelchSliderChanged(s);
 }
 void ReceiverWidget::agcSliderChanged(int g)
