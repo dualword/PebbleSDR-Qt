@@ -19,10 +19,8 @@ Audio::~Audio()
 Audio * Audio::Factory(Receiver *rcv, int framesPerBuffer, Settings *settings)
 {
     if (Audio::useQtAudio) {
-        qDebug()<<"Using QTAudio";
         return new AudioQT(rcv, framesPerBuffer,settings);
     } else {
-        qDebug()<<"Using PortAudio";
         return new SoundCard(rcv, framesPerBuffer,settings);
     }
 
@@ -39,8 +37,10 @@ QStringList Audio::InputDeviceList()
 }
 QStringList Audio::OutputDeviceList()
 {
-    if (Audio::useQtAudio)
+    if (Audio::useQtAudio){
         return AudioQT::OutputDeviceList();
-    else
+    } else {
         return SoundCard::OutputDeviceList();
+    }
+
 }

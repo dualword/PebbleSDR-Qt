@@ -39,7 +39,7 @@ void ReceiverWidget::SetReceiver(Receiver *r)
 
 	QStringList agcModes;
     agcModes << "FAST" << "MED" << "SLOW" << "LONG" << "OFF";
-	//ui.agcBox->addItems(agcModes);
+	ui.agcBox->addItems(agcModes);
 
 #if 0
 	QMenu *settingsMenu = new QMenu();
@@ -54,17 +54,17 @@ void ReceiverWidget::SetReceiver(Receiver *r)
     ui.filterBox->addItems(Demod::demodInfo[dmAM].filters); //Default
     ui.filterBox->setCurrentIndex(Demod::demodInfo[dmAM].defaultFilter);
 
-//    ui.dataSelectionBox->addItem("No Data",NO_DATA);
-//    ui.dataSelectionBox->addItem("Band Data",BAND_DATA);
-//    foreach (QString name,receiver->getPluginNames())
-//        ui.dataSelectionBox->addItem(name,PLUGIN_DATA);
+    ui.dataSelectionBox->addItem("No Data",NO_DATA);
+    ui.dataSelectionBox->addItem("Band Data",BAND_DATA);
+    foreach (QString name,receiver->getPluginNames())
+        ui.dataSelectionBox->addItem(name,PLUGIN_DATA);
 
-    //connect(ui.dataSelectionBox,SIGNAL(currentIndexChanged(int)),this,SLOT(dataSelectionChanged(int)));
+    connect(ui.dataSelectionBox,SIGNAL(currentIndexChanged(int)),this,SLOT(dataSelectionChanged(int)));
     SetDataMode((NO_DATA));
 
 	loMode = true;
 	//Set intial gain slider position
-	//ui.gainSlider->setValue(50);
+	ui.gainSlider->setValue(50);
 	tunerStep=1000;
 
 	modeOffset = 0;
@@ -80,10 +80,10 @@ void ReceiverWidget::SetReceiver(Receiver *r)
     connect(ui.bandCombo,SIGNAL(currentIndexChanged(int)),this,SLOT(bandChanged(int)));
     connect(ui.stationCombo,SIGNAL(currentIndexChanged(int)),this,SLOT(stationChanged(int)));
 
-//    ui.squelchSlider->setMinimum(global->minDb);
-//    ui.squelchSlider->setMaximum(global->maxDb);
-//    ui.squelchSlider->setValue(global->minDb);
-    //connect(ui.squelchSlider,SIGNAL(valueChanged(int)),this,SLOT(squelchSliderChanged(int)));
+    ui.squelchSlider->setMinimum(global->minDb);
+    ui.squelchSlider->setMaximum(global->maxDb);
+    ui.squelchSlider->setValue(global->minDb);
+    connect(ui.squelchSlider,SIGNAL(valueChanged(int)),this,SLOT(squelchSliderChanged(int)));
 
     currentBandIndex = -1;
 
@@ -98,15 +98,15 @@ void ReceiverWidget::SetReceiver(Receiver *r)
     connect(ui.anfButton,SIGNAL(toggled(bool)),this,SLOT(anfButtonToggled(bool)));
 	connect(ui.nbButton,SIGNAL(toggled(bool)),this,SLOT(nbButtonToggled(bool)));
 	connect(ui.nb2Button,SIGNAL(toggled(bool)),this,SLOT(nb2ButtonToggled(bool)));
-//	connect(ui.agcBox,SIGNAL(currentIndexChanged(int)),this,SLOT(agcBoxChanged(int)));
-//	connect(ui.muteButton,SIGNAL(toggled(bool)),this,SLOT(muteButtonToggled(bool)));
+	connect(ui.agcBox,SIGNAL(currentIndexChanged(int)),this,SLOT(agcBoxChanged(int)));
+	connect(ui.muteButton,SIGNAL(toggled(bool)),this,SLOT(muteButtonToggled(bool)));
 	connect(ui.modeBox,SIGNAL(currentIndexChanged(QString)),this,SLOT(modeSelectionChanged(QString)));
 	connect(ui.filterBox,SIGNAL(currentIndexChanged(QString)),this,SLOT(filterSelectionChanged(QString)));
-//	connect(ui.gainSlider,SIGNAL(valueChanged(int)),this,SLOT(gainSliderChanged(int)));
-//	connect(ui.agcSlider,SIGNAL(valueChanged(int)),this,SLOT(agcSliderChanged(int)));
+	connect(ui.gainSlider,SIGNAL(valueChanged(int)),this,SLOT(gainSliderChanged(int)));
+	connect(ui.agcSlider,SIGNAL(valueChanged(int)),this,SLOT(agcSliderChanged(int)));
 //	connect(ui.spectrumWidget,SIGNAL(mixerChanged(int)),this,SLOT(mixerChanged(int)));
 //    connect(ui.spectrumWidget,SIGNAL(mixerChanged(int,bool)),this,SLOT(mixerChanged(int,bool)));
-//    connect(ui.addMemoryButton,SIGNAL(clicked()),this,SLOT(addMemoryButtonClicked()));
+    connect(ui.addMemoryButton,SIGNAL(clicked()),this,SLOT(addMemoryButtonClicked()));
     connect(ui.findStationButton,SIGNAL(clicked()),this,SLOT(findStationButtonClicked()));
 
 	connect(ui.nixie1Up,SIGNAL(clicked()),this,SLOT(nixie1UpClicked()));
@@ -521,7 +521,7 @@ void ReceiverWidget::powerToggled(bool on)
 
 void ReceiverWidget::SetDataMode(int _dataMode)
 {
-    //ui.dataSelectionBox->setCurrentIndex(_dataMode);
+    ui.dataSelectionBox->setCurrentIndex(_dataMode);
 }
 //Tuning display can drive LO or Mixer depending on selection
 void ReceiverWidget::setLoMode(bool b)
@@ -791,19 +791,19 @@ void ReceiverWidget::modeSelectionChanged(QString m)
 }
 void ReceiverWidget::SetDisplayedAgcThreshold(int g)
 {
-	//ui.agcSlider->setValue(g);
+	ui.agcSlider->setValue(g);
 }
 //Allows receiver to set gain and range
 void ReceiverWidget::SetDisplayedGain(int g, int min, int max)
 {
-//	ui.gainSlider->setMinimum(min);
-//	ui.gainSlider->setMaximum(max);
-//	//Set gain slider and let signals do the rest
-//	ui.gainSlider->setValue(g);
+	ui.gainSlider->setMinimum(min);
+	ui.gainSlider->setMaximum(max);
+	//Set gain slider and let signals do the rest
+	ui.gainSlider->setValue(g);
 }
 void ReceiverWidget::SetDisplayedSquelch(int s)
 {
-	//ui.squelchSlider->setValue(s);
+	ui.squelchSlider->setValue(s);
 	squelchSliderChanged(s);
 }
 void ReceiverWidget::agcSliderChanged(int g)
