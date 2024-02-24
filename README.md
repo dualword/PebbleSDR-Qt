@@ -1,7 +1,7 @@
 
-PebbleSDR-Qt - modified version of PebbleSDR.
+PebbleSDR-Mod - modified version of PebbleSDR.
 
 License: GNU General Public License (Version 3)  
-Source code: http://github.com/dualword/PebbleSDR-Qt/  
+Source code: http://github.com/dualword/PebbleSDR-Mod/  
 
 
